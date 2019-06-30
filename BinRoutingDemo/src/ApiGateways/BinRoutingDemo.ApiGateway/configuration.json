@@ -8,13 +8,13 @@
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       },
-      "UpstreamPathTemplate": "/api/payment/{url}",
+      "UpstreamPathTemplate": "/api/payment/api/values",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "ReRoutesCaseSensitive": false
     },
     {
       "UseServiceDiscovery": true,
-      "DownstreamPathTemplate": "/{url}",
+      "DownstreamPathTemplate": "api/{url}",
       "DownstreamScheme": "http",
       "ServiceName": "reporting-service",
       "LoadBalancerOptions": {
@@ -27,7 +27,7 @@
 
   ],
   "GlobalConfiguration": {
-    "BaseUrl": null,
+    "BaseUrl": "http://46.101.76.87:5555",
     "ServiceDiscoveryProvider": {
       "Host": "http://consul",
       "Port": 8500,
