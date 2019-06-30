@@ -5,9 +5,9 @@
       "DownstreamPathTemplate": "/api/{url}",
       "DownstreamScheme": "http",
       "ServiceName": "payment-provider-service",
-      "LoadBalancerOptions": {
-        "Type": "RoundRobin"
-      },
+      //"LoadBalancerOptions": {
+      //  "Type": "RoundRobin"
+      //},
       "UpstreamPathTemplate": "/api/payment/api/values",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "ReRoutesCaseSensitive": false
@@ -17,9 +17,9 @@
       "DownstreamPathTemplate": "/api/{url}",
       "DownstreamScheme": "http",
       "ServiceName": "reporting-service",
-      "LoadBalancerOptions": {
-        "Type": "RoundRobin"
-      },
+      //"LoadBalancerOptions": {
+      //  "Type": "RoundRobin"
+      //},
       "UpstreamPathTemplate": "/reporting/{url}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "ReRoutesCaseSensitive": false
