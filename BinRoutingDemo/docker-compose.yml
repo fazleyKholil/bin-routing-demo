@@ -62,6 +62,16 @@ services:
       NAME: "rabbitmq"
     volumes:
       - ./rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
+  
+  #microservices
+  api-gatway:
+    build: './src/ApiGateways/BinRoutingDemo.ApiGateway'
+  
+  payment-provider:
+    build: './src/Services/PaymentProvider/PaymentProvider.Api'
+
+  reporting:
+    build: './src/Services/Reporting/Reporting.Api'
 
 networks:
   demo-network:

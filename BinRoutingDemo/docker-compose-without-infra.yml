@@ -1,0 +1,27 @@
+version: '3'
+
+services:  
+  #microservices
+  api-gatway:
+    build: './src/ApiGateways/BinRoutingDemo.ApiGateway'
+  
+  payment-provider:
+    build: './src/Services/PaymentProvider/PaymentProvider.Api'
+
+  reporting:
+    build: './src/Services/Reporting/Reporting.Api'
+
+networks:
+  demo-network:
+
+volumes:
+  elasticsearch:
+    driver: local
+
+  
+
+
+
+
+
+
