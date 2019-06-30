@@ -1,24 +1,16 @@
 version: '3.4'
 services:
+  #microservices
   api-gateway:
-    image: api-gateway:latest
-    build:
-      context: .
-      dockerfile: src/ApiGateways/BinRoutingDemo.ApiGateway/Dockerfile
+    build: './src/ApiGateways/BinRoutingDemo.ApiGateway'
     container_name: api-gateway
-
+  
   payment-provider:
-    image: payment-provider:latest
-    build:
-      context: .
-      dockerfile: src/Services/PaymentProvider/PaymentProvider.Api/Dockerfile
+    build: './src/Services/PaymentProvider/PaymentProvider.Api'
     container_name: payment-provider
 
   reporting:
-    image: reporting:latest
-    build:
-      context: .
-      dockerfile: /src/Services/Reporting/Reporting.Api/Dockerfile
+    build: './src/Services/Reporting/Reporting.Api'
     container_name: reporting
     
   consul:
