@@ -29,7 +29,7 @@
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:63934",
     "ServiceDiscoveryProvider": {
-      "Host": "http://46.101.76.87",
+      "Host": "http://consul",
       "Port": 8500
     }
   }
