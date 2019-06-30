@@ -5,10 +5,10 @@
       "DownstreamPathTemplate": "/api/{url}",
       "DownstreamScheme": "http",
       "ServiceName": "payment-provider-service",
-      //"LoadBalancerOptions": {
-      //  "Type": "RoundRobin"
-      //},
-      "UpstreamPathTemplate": "/api/payment/api/values",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "UpstreamPathTemplate": "/api/payment/{url}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "ReRoutesCaseSensitive": false
     },
@@ -16,11 +16,11 @@
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/{url}",
       "DownstreamScheme": "http",
-      "ServiceName": "reporting-service",
-      //"LoadBalancerOptions": {
-      //  "Type": "RoundRobin"
-      //},
-      "UpstreamPathTemplate": "/reporting/{url}",
+      "ServiceName": "/api/reporting/{url}",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "UpstreamPathTemplate": "api/reporting/{url}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "ReRoutesCaseSensitive": false
     }
@@ -29,7 +29,7 @@
   "GlobalConfiguration": {
     "BaseUrl": "http://46.101.76.87:5555",
     "ServiceDiscoveryProvider": {
-      "Host": "http://consul",
+      "Host": "consul",
       "Port": 8500,
       "Type": "Consul"
     }

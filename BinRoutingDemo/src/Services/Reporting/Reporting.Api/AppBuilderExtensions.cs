@@ -30,7 +30,7 @@ namespace Reporting.Api
                 Name = consulConfig.ServiceName,
                 Address = consulConfig.IP,
                 Port = consulConfig.Port,
-                Tags = new[] { $"urlprefix-/{consulConfig.ServiceName}" }
+                Tags = new[] { $"urlprefix1-/{consulConfig.ServiceName}" }
             };
 
             consulClient.Agent.ServiceRegister(registration).Wait();
