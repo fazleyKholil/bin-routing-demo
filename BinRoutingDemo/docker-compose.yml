@@ -20,6 +20,9 @@ services:
       - Consul__Port=8500
       - service__address=payment-provider
       - service__port=80
+    deploy:
+      mode: replicated
+      replicas: 3
 
   reporting-service:
     build: './src/Services/Reporting/Reporting.Api'
@@ -30,6 +33,9 @@ services:
       - Consul__Port=8500
       - service__address=reporting
       - service__port=80
+    deploy:
+      mode: replicated
+      replicas: 3
     
   #infra
   consul:
