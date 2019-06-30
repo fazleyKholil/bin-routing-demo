@@ -13,7 +13,7 @@ namespace PaymentProvider.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "PaymentProvider.Api"};
+            return new string[] { $"PaymentProvider.Api - {Program.IP}" };
         }
 
         // GET api/values/5

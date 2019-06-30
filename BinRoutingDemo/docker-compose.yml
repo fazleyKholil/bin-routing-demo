@@ -4,15 +4,34 @@ services:
   api-gateway:
     build: './src/ApiGateways/BinRoutingDemo.ApiGateway'
     container_name: api-gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - GlobalConfiguration__ServiceDiscoveryProvider__Host=consul
+      - GlobalConfiguration__ServiceDiscoveryProvider__Port=8500
+    ports:
+      - "5555:5555"
   
   payment-provider-service:
     build: './src/Services/PaymentProvider/PaymentProvider.Api'
     container_name: payment-provider-service
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Consul__IP =consul
+      - Consul__Port=8500
+      - service__address=payment-provider
+      - service__port=80
 
   reporting-service:
     build: './src/Services/Reporting/Reporting.Api'
     container_name: reporting-service
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Consul__IP =consul
+      - Consul__Port=8500
+      - service__address=reporting
+      - service__port=80
     
+  #infra
   consul:
     image: consul:latest
     command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
@@ -23,5 +42,48 @@ services:
       - "8500:8500"
       - "8600:8600"
       - "8600:8600/udp"
+  
+  elasticsearch:
+    container_name: elasticsearch
+    hostname: elasticsearch
+    environment:
+      http.host: 0.0.0.0
+      transport.host: 127.0.0.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    networks:
+      - demo-network
+    ports:
+    - 9200:9200
+    restart: unless-stopped
+    volumes:
+    - elasticsearch:/usr/share/elasticsearch/data:rw
+
+  kibana:
+    container_name: kibana
+    hostname: kibana
+    depends_on:
+    - elasticsearch
+    environment:
+      ELASTICSEARCH_PASSWORD: changeme
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_USERNAME: elastic
+    image: docker.elastic.co/kibana/kibana-oss:7.2.0
+    networks:
+      - demo-network
+    ports:
+    - 5601:5601
+    restart: unless-stopped
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: rabbit
+    hostname: rabbit
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq"
+    volumes:
+      - ./rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
 
 

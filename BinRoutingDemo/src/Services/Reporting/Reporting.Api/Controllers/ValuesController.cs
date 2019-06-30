@@ -13,7 +13,7 @@ namespace Reporting.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "Reporting.Api" };
+            return new string[] { $"Reporting.Api - {Program.IP}" };
         }
 
         // GET api/values/5
