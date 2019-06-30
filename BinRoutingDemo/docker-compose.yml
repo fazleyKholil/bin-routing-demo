@@ -5,13 +5,13 @@ services:
     build: './src/ApiGateways/BinRoutingDemo.ApiGateway'
     container_name: api-gateway
   
-  payment-provider:
+  payment-provider-service:
     build: './src/Services/PaymentProvider/PaymentProvider.Api'
-    container_name: payment-provider
+    container_name: payment-provider-service
 
-  reporting:
+  reporting-service:
     build: './src/Services/Reporting/Reporting.Api'
-    container_name: reporting
+    container_name: reporting-service
     
   consul:
     image: consul:latest

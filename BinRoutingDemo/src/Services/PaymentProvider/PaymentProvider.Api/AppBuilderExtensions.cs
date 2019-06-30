@@ -10,13 +10,8 @@ namespace PaymentProvider.Api
 {
     public static class AppBuilderExtensions
     {
-
-        public static ConsulConfiguration ConsulConfiguration { get; set; }
-
         public static IApplicationBuilder RegisterConsul(this IApplicationBuilder app, IApplicationLifetime lifetime, ConsulConfiguration consulConfig)
         {
-            ConsulConfiguration = consulConfig;
-
             Console.WriteLine($"Consul config -> http://{consulConfig.ConsulIP}:{consulConfig.ConsulPort}");
             var consulClient = new ConsulClient(x => x.Address = new Uri($"http://{consulConfig.ConsulIP}:{consulConfig.ConsulPort}"));
             var httpCheck = new AgentServiceCheck()

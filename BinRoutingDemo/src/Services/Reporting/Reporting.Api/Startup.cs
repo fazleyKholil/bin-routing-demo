@@ -38,7 +38,7 @@ namespace Reporting.Api
 
             var config = new ConsulConfiguration
             {
-                IP = NetworkHelper.LocalIPAddress,
+                IP = Configuration["Service:Name"],
                 Port = Convert.ToInt32(Configuration["Service:Port"]),
                 ServiceName = Configuration["Service:Name"],
                 ConsulIP = Configuration["Consul:IP"],

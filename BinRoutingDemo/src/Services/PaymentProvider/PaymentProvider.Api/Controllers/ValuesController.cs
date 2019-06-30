@@ -13,7 +13,7 @@ namespace PaymentProvider.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "PaymentProvider.Api", $"Consul config -> http://{AppBuilderExtensions.ConsulConfiguration.ConsulIP}:{AppBuilderExtensions.ConsulConfiguration.ConsulPort}" };
+            return new string[] { "PaymentProvider.Api"};
         }
 
         // GET api/values/5

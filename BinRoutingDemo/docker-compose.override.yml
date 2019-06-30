@@ -8,7 +8,7 @@ services:
     ports:
       - "80:80"
 
-  payment-provider:
+  payment-provider-service:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - Consul__IP =consul
@@ -18,7 +18,7 @@ services:
     ports:
       - "80"
 
-  reporting:
+  reporting-service:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - Consul__IP =consul

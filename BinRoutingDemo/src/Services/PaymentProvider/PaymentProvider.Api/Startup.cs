@@ -38,14 +38,13 @@ namespace PaymentProvider.Api
 
             var config = new ConsulConfiguration
             {
-                IP = NetworkHelper.LocalIPAddress,
+                IP = Configuration["Service:Name"],
                 Port = Convert.ToInt32(Configuration["Service:Port"]),
                 ServiceName = Configuration["Service:Name"],
                 ConsulIP = Configuration["Consul:IP"],
                 ConsulPort = Convert.ToInt32(Configuration["Consul:Port"])
             };
-
-            Console.WriteLine("------------__>" + config.ConsulIP);
+           
 
             app.RegisterConsul(lifetime, config);
         }
