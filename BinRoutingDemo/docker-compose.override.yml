@@ -1,0 +1,30 @@
+version: '3.4'
+services:
+ api-gateway: 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80:80"
+
+payment-provider:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Consul__IP =consul
+      - Consul__Port=8500
+      - service__address=payment-provider
+      - service__port=80
+    ports:
+      - "80"
+
+reporting:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Consul__IP =consul
+      - Consul__Port=8500
+      - service__address=reporting
+      - service__port=80
+    ports:
+      - "80"
+consul:
+    ports:
+      - "8500"

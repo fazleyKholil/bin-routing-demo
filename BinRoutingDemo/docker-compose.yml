@@ -1,89 +1,28 @@
-version: '3'
-
+version: '3.4'
 services:
+  api-gateway:
+    image: api-gateway:latest
+    build:
+      context: .
+      dockerfile: src/ApiGateways/BinRoutingDemo.ApiGateway
+    container_name: api-gateway
 
-  consul-agent-1: &consul-agent
+payment-provider:
+    image: payment-provider:latest
+    build:
+      context: .
+      dockerfile: src/Services/PaymentProvider/PaymentProvider.Api
+    container_name: payment-provider
+
+reporting:
+    image: reporting:latest
+    build:
+      context: .
+      dockerfile: /src/Services/Reporting/Reporting.Api
+    container_name: reporting
+    
+consul:
     image: consul:latest
-    networks:
-      - demo-network
-    command: "agent -retry-join consul-server-bootstrap -client 0.0.0.0"
-  consul-agent-2:
-    <<: *consul-agent
-  consul-agent-3:
-    <<: *consul-agent
-  consul-server-1: &consul-server
-    <<: *consul-agent
-    command: "agent -server -retry-join consul-server-bootstrap -client 0.0.0.0"
-  consul-server-2:
-    <<: *consul-server
-  consul-server-bootstrap:
-    <<: *consul-agent
-    ports:
-      - "8400:8400"
-      - "8500:8500"
-      - "8600:8600"
-      - "8600:8600/udp"
-    command: "agent -server -bootstrap-expect 3 -ui -client 0.0.0.0"
-
-  elasticsearch:
-    environment:
-      http.host: 0.0.0.0
-      transport.host: 127.0.0.1
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
-    networks:
-      - demo-network
-    ports:
-    - 9200:9200
-    restart: unless-stopped
-    volumes:
-    - elasticsearch:/usr/share/elasticsearch/data:rw
-
-  kibana:
-    depends_on:
-    - elasticsearch
-    environment:
-      ELASTICSEARCH_PASSWORD: changeme
-      ELASTICSEARCH_URL: http://elasticsearch:9200
-      ELASTICSEARCH_USERNAME: elastic
-    image: docker.elastic.co/kibana/kibana-oss:7.2.0
-    networks:
-      - demo-network
-    ports:
-    - 5601:5601
-    restart: unless-stopped
-
-  rabbitmq:
-    image: "rabbitmq:3-management"
-    hostname: "rabbit"
-    ports:
-      - "15672:15672"
-      - "5672:5672"
-    labels:
-      NAME: "rabbitmq"
-    volumes:
-      - ./rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
-  
-  #microservices
-  api-gatway:
-    build: './src/ApiGateways/BinRoutingDemo.ApiGateway'
-  
-  payment-provider:
-    build: './src/Services/PaymentProvider/PaymentProvider.Api'
-
-  reporting:
-    build: './src/Services/Reporting/Reporting.Api'
-
-networks:
-  demo-network:
-
-volumes:
-  elasticsearch:
-    driver: local
-
-  
-
-
-
-
-
-
+    command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
+    hostname: consul
+    container_name: consul

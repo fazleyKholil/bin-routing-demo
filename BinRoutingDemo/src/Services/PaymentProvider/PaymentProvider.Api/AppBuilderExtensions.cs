@@ -17,7 +17,7 @@ namespace PaymentProvider.Api
             {
                 DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5),
                 Interval = TimeSpan.FromSeconds(10),
-                HTTP = $"http://{consulConfig.IP}:{consulConfig.Port}/api/health",
+                HTTP = $"http://{consulConfig.IP}:{consulConfig.Port}/health",
                 Timeout = TimeSpan.FromSeconds(5)
             };
 

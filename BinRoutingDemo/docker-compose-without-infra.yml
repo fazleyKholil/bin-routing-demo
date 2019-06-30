@@ -2,7 +2,7 @@ version: '3'
 
 services:  
   #microservices
-  api-gatway:
+  api-gateway:
     build: './src/ApiGateways/BinRoutingDemo.ApiGateway'
   
   payment-provider:
@@ -10,8 +10,6 @@ services:
 
   reporting:
     build: './src/Services/Reporting/Reporting.Api'
-  
-
 
 
 
