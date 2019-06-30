@@ -39,7 +39,7 @@ namespace Reporting.Api
             var config = new ConsulConfiguration
             {
                 IP = Configuration["Service:Name"],
-                Port = Convert.ToInt32(Configuration["Service:Port"]),
+                Port = Program.Port,
                 ServiceName = Configuration["Service:Name"],
                 ConsulIP = Configuration["Consul:IP"],
                 ConsulPort = Convert.ToInt32(Configuration["Consul:Port"])
