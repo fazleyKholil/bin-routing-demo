@@ -2,13 +2,13 @@
   "ReRoutes": [
     {
       "UseServiceDiscovery": true,
-      "DownstreamPathTemplate": "/{url}",
+      "DownstreamPathTemplate": "/api/{url}",
       "DownstreamScheme": "http",
       "ServiceName": "payment-provider-service",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       },
-      "UpstreamPathTemplate": "/payment/{url}",
+      "UpstreamPathTemplate": "/api/payment/{url}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "ReRoutesCaseSensitive": false
     },
