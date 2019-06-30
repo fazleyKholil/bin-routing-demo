@@ -4,7 +4,7 @@
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/{url}",
       "DownstreamScheme": "http",
-      "ServiceName": "PaymentProvider.Service",
+      "ServiceName": "payment-provider-service",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       },
@@ -16,7 +16,7 @@
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/{url}",
       "DownstreamScheme": "http",
-      "ServiceName": "Reporting.Service",
+      "ServiceName": "reporting-service",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       },
