@@ -24,6 +24,7 @@ namespace BinRoutingDemo.ApiGateway
         {
             var config = new ConfigurationBuilder()
                 .AddCommandLine(args)
+                .AddEnvironmentVariables()
                 .Build();
 
             IP = config["ip"];

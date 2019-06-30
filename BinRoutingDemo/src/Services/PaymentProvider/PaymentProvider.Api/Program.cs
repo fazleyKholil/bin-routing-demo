@@ -24,6 +24,7 @@ namespace PaymentProvider.Api
         {
             var config = new ConfigurationBuilder()
                 .AddCommandLine(args)
+                .AddEnvironmentVariables()
                 .Build();
 
             IP = config["ip"];
