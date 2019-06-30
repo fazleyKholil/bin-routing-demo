@@ -30,7 +30,8 @@
     "BaseUrl": "http://localhost:63934",
     "ServiceDiscoveryProvider": {
       "Host": "http://consul",
-      "Port": 8500
+      "Port": 8500,
+      "Type": "Consul"
     }
   }
 }
