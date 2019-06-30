@@ -1,0 +1,36 @@
+{
+  "ReRoutes": [
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "http",
+      "ServiceName": "PaymentProvider.Service",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "UpstreamPathTemplate": "/payment/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "ReRoutesCaseSensitive": false
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "http",
+      "ServiceName": "Reporting.Service",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "UpstreamPathTemplate": "/reporting/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "ReRoutesCaseSensitive": false
+    }
+
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:63934",
+    "ServiceDiscoveryProvider": {
+      "Host": "http://46.101.76.87",
+      "Port": 8500
+    }
+  }
+}
