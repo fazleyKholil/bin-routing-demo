@@ -12,12 +12,13 @@ namespace PaymentProvider.Api
     {
         public static IApplicationBuilder RegisterConsul(this IApplicationBuilder app, IApplicationLifetime lifetime, ConsulConfiguration consulConfig)
         {
+            Console.WriteLine($"Consul config -> http://{consulConfig.ConsulIP}:{consulConfig.ConsulPort}");
             var consulClient = new ConsulClient(x => x.Address = new Uri($"http://{consulConfig.ConsulIP}:{consulConfig.ConsulPort}"));
             var httpCheck = new AgentServiceCheck()
             {
                 DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5),
                 Interval = TimeSpan.FromSeconds(10),
-                HTTP = $"http://{consulConfig.IP}:{consulConfig.Port}/health",
+                HTTP = $"http://{consulConfig.IP}:{consulConfig.Port}/api/health",
                 Timeout = TimeSpan.FromSeconds(5)
             };
 
