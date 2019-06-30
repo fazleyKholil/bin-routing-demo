@@ -27,7 +27,7 @@ namespace PaymentProvider.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime lifetime)
         {
             if (env.IsDevelopment())
             {
@@ -35,6 +35,19 @@ namespace PaymentProvider.Api
             }
 
             app.UseMvc();
+
+            var config = new ConsulConfiguration
+            {
+                IP = NetworkHelper.LocalIPAddress,
+                Port = Convert.ToInt32(Configuration["Service:Port"]),
+                ServiceName = Configuration["Service:Name"],
+                ConsulIP = Configuration["Consul:IP"],
+                ConsulPort = Convert.ToInt32(Configuration["Consul:Port"])
+            };
+
+            Console.WriteLine("------------__>" + config.ConsulIP);
+
+            app.RegisterConsul(lifetime, config);
         }
     }
 }
