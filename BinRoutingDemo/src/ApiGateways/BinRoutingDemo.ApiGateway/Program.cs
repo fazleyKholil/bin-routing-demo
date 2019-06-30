@@ -42,7 +42,7 @@ namespace BinRoutingDemo.ApiGateway
 
             return WebHost.CreateDefaultBuilder(args)
                             .UseStartup<Startup>()
-                            .UseUrls($"http://{IP}:{Port}")
+                            .UseUrls($"http://{IP}:5555")
                             .ConfigureAppConfiguration((hostingContext, builder) =>
                             {
                                 builder.AddJsonFile("configuration.json", false, true);
