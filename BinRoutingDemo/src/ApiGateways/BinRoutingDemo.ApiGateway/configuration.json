@@ -14,9 +14,9 @@
     },
     {
       "UseServiceDiscovery": true,
-      "DownstreamPathTemplate": "/api2/{url}",
+      "DownstreamPathTemplate": "/api/{url}",
       "DownstreamScheme": "http",
-      "ServiceName": "/api2/reporting/{url}",
+      "ServiceName": "reporting-service",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       },
