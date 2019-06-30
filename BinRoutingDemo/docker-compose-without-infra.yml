@@ -10,14 +10,6 @@ services:
 
   reporting:
     build: './src/Services/Reporting/Reporting.Api'
-
-networks:
-  demo-network:
-
-volumes:
-  elasticsearch:
-    driver: local
-
   
 
 
