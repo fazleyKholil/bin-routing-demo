@@ -16,9 +16,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reporting", "Reporting", "{24AE1FF9-38A9-4C6D-8B45-4757559E0148}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{239FE75E-A81B-4884-8B90-E971F7601017}"
-	ProjectSection(SolutionItems) = preProject
-		DockerFile = DockerFile
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinRoutingDemo.ApiGateway", "src\ApiGateways\BinRoutingDemo.ApiGateway\BinRoutingDemo.ApiGateway.csproj", "{0E813AFE-28FB-44B3-91BA-49B3109925EC}"
 EndProject
