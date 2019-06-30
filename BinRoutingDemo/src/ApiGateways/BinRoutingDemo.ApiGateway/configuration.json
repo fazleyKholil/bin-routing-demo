@@ -27,7 +27,7 @@
 
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:63934",
+    "BaseUrl": "http://api-gateway:5555",
     "ServiceDiscoveryProvider": {
       "Host": "http://consul",
       "Port": 8500,
