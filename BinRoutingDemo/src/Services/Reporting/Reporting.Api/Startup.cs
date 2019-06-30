@@ -44,6 +44,7 @@ namespace Reporting.Api
                 ConsulIP = Configuration["Consul:IP"],
                 ConsulPort = Convert.ToInt32(Configuration["Consul:Port"])
             };
+            Console.WriteLine($"config.ConsulIP -------------_> {config.ConsulIP}");
             app.RegisterConsul(lifetime, config);
         }
     }
