@@ -20,7 +20,7 @@
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       },
-      "UpstreamPathTemplate": "api/reporting/{url}",
+      "UpstreamPathTemplate": "/api/reporting/{url}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "ReRoutesCaseSensitive": false
     }
