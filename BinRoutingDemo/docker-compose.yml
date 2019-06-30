@@ -7,22 +7,24 @@ services:
       dockerfile: src/ApiGateways/BinRoutingDemo.ApiGateway
     container_name: api-gateway
 
-payment-provider:
+  payment-provider:
     image: payment-provider:latest
     build:
       context: .
       dockerfile: src/Services/PaymentProvider/PaymentProvider.Api
     container_name: payment-provider
 
-reporting:
+  reporting:
     image: reporting:latest
     build:
       context: .
       dockerfile: /src/Services/Reporting/Reporting.Api
     container_name: reporting
     
-consul:
+  consul:
     image: consul:latest
     command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
     hostname: consul
     container_name: consul
+
+
