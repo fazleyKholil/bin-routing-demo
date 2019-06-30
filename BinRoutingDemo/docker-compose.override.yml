@@ -3,6 +3,8 @@ services:
   api-gateway: 
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - GlobalConfiguration__ServiceDiscoveryProvider__Host=consul
+      - GlobalConfiguration__ServiceDiscoveryProvider__Port=8500
     ports:
       - "80:80"
 
