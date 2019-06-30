@@ -4,21 +4,21 @@ services:
     image: api-gateway:latest
     build:
       context: .
-      dockerfile: src/ApiGateways/BinRoutingDemo.ApiGateway
+      dockerfile: src/ApiGateways/BinRoutingDemo.ApiGateway/Dockerfile
     container_name: api-gateway
 
   payment-provider:
     image: payment-provider:latest
     build:
       context: .
-      dockerfile: src/Services/PaymentProvider/PaymentProvider.Api
+      dockerfile: src/Services/PaymentProvider/PaymentProvider.Api/Dockerfile
     container_name: payment-provider
 
   reporting:
     image: reporting:latest
     build:
       context: .
-      dockerfile: /src/Services/Reporting/Reporting.Api
+      dockerfile: /src/Services/Reporting/Reporting.Api/Dockerfile
     container_name: reporting
     
   consul:
